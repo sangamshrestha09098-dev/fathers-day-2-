@@ -1,291 +1,760 @@
-<!DOCTYPE html>
-<html lang="ne">
+```html
+<
+!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Father's Day ❤️</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Father's Day ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, #4b0000 0%, #160000 45%, #050000 100%);
+      color: white;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Floating hearts */
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff1744;
+      font-size: 24px;
+      opacity: 0.7;
+      animation: float 6s ease-in-out infinite;
+      text-shadow: 0 0 15px rgba(255, 23, 68, 0.8);
+    }
+
+    .heart:nth-child(1) {
+      left: 8%;
+      top: 15%;
+    }
+
+    .heart:nth-child(2) {
+      right: 10%;
+      top: 25%;
+      animation-delay: 1s;
+    }
+
+    .heart:nth-child(3) {
+      left: 15%;
+      bottom: 20%;
+      animation-delay: 2s;
+    }
+
+    .heart:nth-child(4) {
+      right: 15%;
+      bottom: 15%;
+      animation-delay: 3s;
+    }
+
+    .heart:nth-child(5) {
+      left: 48%;
+      top: 8%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-25px) scale(1.15);
+      }
+    }
+
+    /* Opening screen */
+    .opening-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .opening-card {
+      width: 92%;
+      max-width: 650px;
+      text-align: center;
+      padding: 55px 30px;
+      background: rgba(30, 0, 0, 0.85);
+      border: 1px solid #ff1744;
+      border-radius: 25px;
+      box-shadow:
+        0 0 35px rgba(255, 23, 68, 0.2),
+        inset 0 0 25px rgba(255, 23, 68, 0.05);
+      backdrop-filter: blur(8px);
+    }
+
+    .main-heart {
+      font-size: 70px;
+      margin-bottom: 15px;
+      animation: heartbeat 1.4s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.13);
+      }
+    }
+
+    .opening-card h1 {
+      font-size: 48px;
+      color: #ff1744;
+      margin-bottom: 15px;
+      text-shadow: 0 0 20px rgba(255, 23, 68, 0.6);
+    }
+
+    .opening-card h2 {
+      font-size: 27px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .opening-card p {
+      color: #ddd;
+      margin-bottom: 30px;
+      font-size: 17px;
+    }
+
+    .open-button {
+      border: none;
+      padding: 16px 32px;
+      border-radius: 50px;
+      background: #ff1744;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(255, 23, 68, 0.35);
+      transition: 0.3s ease;
+    }
+
+    .open-button:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 35px rgba(255, 23, 68, 0.65);
+    }
+
+    /* Main page */
+    .surprise-page {
+      display: none;
+      position: relative;
+      z-index: 2;
+      padding: 80px 20px;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    .page-heart {
+      text-align: center;
+      color: #ff1744;
+      font-size: 55px;
+      margin-bottom: 10px;
+    }
+
+    .container > h2 {
+      text-align: center;
+      color: #ff1744;
+      font-size: 40px;
+      margin-bottom: 15px;
+      text-shadow: 0 0 15px rgba(255, 23, 68, 0.4);
+    }
+
+    .intro {
+      text-align: center;
+      color: #ccc;
+      font-size: 18px;
+      margin-bottom: 65px;
+    }
+
+    /* Memories */
+    .memory {
+      margin-bottom: 80px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(35px);
+      transition: all 0.8s ease;
+    }
+
+    .memory.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .photo-card {
+      width: 100%;
+      max-width: 720px;
+      margin: auto;
+      padding: 12px;
+      background: #100000;
+      border: 1px solid rgba(255, 23, 68, 0.55);
+      border-radius: 18px;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.55);
+      cursor: pointer;
+      transition: 0.35s ease;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: #ff1744;
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.7),
+        0 0 25px rgba(255, 23, 68, 0.2);
+    }
+
+    .photo-card img {
+      width: 100%;
+      display: block;
+      max-height: 550px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .memory h3 {
+      color: #ff1744;
+      font-size: 25px;
+      margin-top: 20px;
+    }
+
+    .memory p {
+      color: #ccc;
+      margin-top: 10px;
+      line-height: 1.7;
+    }
+
+    /* Final message */
+    .final-card {
+      text-align: center;
+      background: rgba(25, 0, 0, 0.8);
+      border: 1px solid rgba(255, 23, 68, 0.6);
+      border-radius: 25px;
+      padding: 45px 25px;
+      margin-top: 30px;
+      box-shadow: 0 0 35px rgba(255, 23, 68, 0.12);
+    }
+
+    .final-card h2 {
+      color: #ff1744;
+      font-size: 33px;
+      margin-bottom: 18px;
+    }
+
+    .final-card p {
+      color: #eee;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    /* Popup */
+    .photo-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.9);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox-box {
+      width: 95%;
+      max-width: 1100px;
+      max-height: 90vh;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid #ff1744;
+      background: #0a0000;
+      box-shadow: 0 0 45px rgba(255, 23, 68, 0.25);
+    }
+
+    .lightbox-image {
+      width: 58%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .lightbox-image img {
+      width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .lightbox-text {
+      width: 42%;
+      padding: 45px 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(
+        145deg,
+        #280000,
+        #0c0000
+      );
+    }
+
+    .lightbox-text h2 {
+      color: #ff1744;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .lightbox-text p {
+      color: #eee;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .close-button {
+      position: absolute;
+      right: 14px;
+      top: 12px;
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: #ff1744;
+      color: white;
+      font-size: 25px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .close-button:hover {
+      transform: scale(1.08);
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+
+      .opening-card {
+        padding: 40px 20px;
+      }
+
+      .opening-card h1 {
+        font-size: 36px;
+      }
+
+      .opening-card h2 {
+        font-size: 23px;
+      }
+
+      .container > h2 {
+        font-size: 30px;
+      }
+
+      .lightbox-box {
+        flex-direction: column;
+        max-height: 92vh;
+        overflow-y: auto;
+      }
+
+      .lightbox-image,
+      .lightbox-text {
+        width: 100%;
+      }
+
+      .lightbox-image img {
+        max-height: 45vh;
+      }
+
+      .lightbox-text {
+        padding: 30px 22px;
+      }
+
+      .lightbox-text h2 {
+        font-size: 25px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="decorations">
-    <span>♥</span>
-    <span>✦</span>
-    <span>♥</span>
-    <span>✧</span>
-    <span>♥</span>
-</div>
+  <!-- Floating hearts -->
+  <div class="hearts">
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+  </div>
 
-<!-- OPENING -->
 
-<section id="openingScreen" class="opening-screen">
+  <!-- OPENING -->
+  <section class="opening-screen" id="openingScreen">
 
     <div class="opening-card">
 
-        <div class="heart">❤️</div>
+      <div class="main-heart">❤️</div>
 
-        <h1>
-            Happy Father's Day
-        </h1>
+      <h1>Happy Father's Day</h1>
 
-        <p class="subtitle">
-            बुबाका लागि एउटा सानो सरप्राइज ❤️
-        </p>
+      <h2>
+        बुबा,<br>
+        तपाईंका लागि एउटा सानो सरप्राइज छ ❤️
+      </h2>
 
-        <h2>
-            बुबा,<br>
-            तपाईंका लागि केही विशेष छ।
-        </h2>
+      <p>
+        केही सुन्दर सम्झनाहरू र मनका केही शब्दहरू...
+      </p>
 
-        <p class="small-text">
-            यो खोल्नुहोस्...
-        </p>
-
-        <button id="surpriseButton">
-            SURPRISE खोल्नुहोस् ❤️
-        </button>
+      <button class="open-button" onclick="openSurprise()">
+        SURPRISE खोल्नुहोस् ❤️
+      </button>
 
     </div>
 
-</section>
+  </section>
 
 
-<!-- MAIN PAGE -->
+  <!-- MAIN PAGE -->
+  <section class="surprise-page" id="surprisePage">
 
-<section id="surprisePage" class="surprise-page">
+    <div class="container">
 
-    <div class="content">
+      <div class="page-heart">❤️</div>
 
-        <div class="top-heart">❤️</div>
+      <h2>बुबा, यो तपाईंका लागि हो ❤️</h2>
 
-        <h2>
-            बुबा, यो तपाईंका लागि हो
-        </h2>
+      <p class="intro">
+        तपाईंका लागि राखिएका केही विशेष सम्झनाहरू...
+      </p>
 
-        <p class="intro">
-            केही सम्झना, केही तस्बिर,
-            अनि मनका केही शब्दहरू...
+
+      <!-- PHOTO 1 -->
+      <div class="memory">
+
+        <div
+          class="photo-card photo-link"
+          data-title="पहिलो सम्झना ❤️"
+          data-description="यहाँ पहिलो फोटोको आफ्नो वास्तविक कथा लेख्नुहोस्।"
+        >
+
+          <img src="PHOTO 1.jpg" alt="Memory 1">
+
+        </div>
+
+        <h3>पहिलो सम्झना ❤️</h3>
+
+        <p>
+          एउटा विशेष पल जुन सधैं सम्झनामा रहनेछ।
         </p>
 
-
-        <!-- PHOTO 1 -->
-
-        <section class="memory reveal">
-
-            <div class="photo-card">
-
-                <div class="photo-placeholder">
-                    📸
-                    <strong>PHOTO 1</strong>
-                </div>
-
-                <div class="caption">
-                    एउटा सुन्दर सम्झना ❤️
-                </div>
-
-            </div>
-
-            <p>
-                यहाँ पहिलो सन्देश आउनेछ।
-            </p>
-
-        </section>
+      </div>
 
 
-        <!-- PHOTO 2 -->
+      <!-- PHOTO 2 -->
+      <div class="memory">
 
-        <section class="memory reveal">
+        <div
+          class="photo-card photo-link"
+          data-title="सुन्दर पल ❤️"
+          data-description="यहाँ दोस्रो फोटोको वास्तविक description लेख्नुहोस्।"
+        >
 
-            <div class="photo-card">
+          <img src="PHOTO 2.jpg" alt="Memory 2">
 
-                <div class="photo-placeholder">
-                    📸
-                    <strong>PHOTO 2</strong>
-                </div>
+        </div>
 
-                <div class="caption">
-                    एउटा मिठो पल ❤️
-                </div>
+        <h3>सुन्दर पल ❤️</h3>
 
-            </div>
+        <p>
+          सँगै बिताएको अर्को सुन्दर समय।
+        </p>
 
-            <p>
-                यहाँ दोस्रो सन्देश आउनेछ।
-            </p>
-
-        </section>
+      </div>
 
 
-        <!-- PHOTO 3 -->
+      <!-- PHOTO 3 -->
+      <div class="memory">
 
-        <section class="memory reveal">
+        <div
+          class="photo-card photo-link"
+          data-title="अविस्मरणीय सम्झना ❤️"
+          data-description="यहाँ तेस्रो फोटोको description राख्नुहोस्।"
+        >
 
-            <div class="photo-card">
+          <img src="PHOTO 3.jpg" alt="Memory 3">
 
-                <div class="photo-placeholder">
-                    📸
-                    <strong>PHOTO 3</strong>
-                </div>
+        </div>
 
-                <div class="caption">
-                    एउटा विशेष पल ❤️
-                </div>
+        <h3>अविस्मरणीय सम्झना ❤️</h3>
 
-            </div>
+        <p>
+          यो पल पनि सधैं मनमा रहनेछ।
+        </p>
 
-            <p>
-                यहाँ तेस्रो सन्देश आउनेछ।
-            </p>
-
-        </section>
+      </div>
 
 
-        <!-- PHOTO 4 -->
+      <!-- PHOTO 4 -->
+      <div class="memory">
 
-        <section class="memory reveal">
+        <div
+          class="photo-card photo-link"
+          data-title="बुबासँगको पल ❤️"
+          data-description="यहाँ चौथो फोटोको वास्तविक कथा लेख्नुहोस्।"
+        >
 
-            <div class="photo-card">
+          <img src="PHOTO 4.jpg" alt="Memory 4">
 
-                <div class="photo-placeholder">
-                    📸
-                    <strong>PHOTO 4</strong>
-                </div>
+        </div>
 
-                <div class="caption">
-                    एउटा अमूल्य सम्झना ❤️
-                </div>
+        <h3>बुबासँगको पल ❤️</h3>
 
-            </div>
+        <p>
+          परिवारसँग बितेका पलहरू नै सबैभन्दा मूल्यवान हुन्छन्।
+        </p>
 
-            <p>
-                यहाँ चौथो सन्देश आउनेछ।
-            </p>
-
-        </section>
+      </div>
 
 
-        <!-- PHOTO 5 -->
+      <!-- PHOTO 5 -->
+      <div class="memory">
 
-        <section class="memory reveal">
+        <div
+          class="photo-card photo-link"
+          data-title="सधैं विशेष ❤️"
+          data-description="यहाँ पाँचौं फोटोको description लेख्नुहोस्।"
+        >
 
-            <div class="photo-card">
+          <img src="PHOTO 5.jpg" alt="Memory 5">
 
-                <div class="photo-placeholder">
-                    📸
-                    <strong>PHOTO 5</strong>
-                </div>
+        </div>
 
-                <div class="caption">
-                    सधैं सम्झिरहने पल ❤️
-                </div>
+        <h3>सधैं विशेष ❤️</h3>
 
-            </div>
+        <p>
+          तपाईंको लागि अर्को सानो सम्झना।
+        </p>
 
-            <p>
-                यहाँ पाँचौँ सन्देश आउनेछ।
-            </p>
-
-        </section>
+      </div>
 
 
-        <!-- FINAL -->
+      <!-- FINAL -->
+      <div class="final-card">
 
-        <section class="final-card reveal">
+        <h2>❤️ बुबा, धन्यवाद ❤️</h2>
 
-            <div class="final-heart">
-                ❤️
-            </div>
+        <p>
+          मेरो जीवनमा सधैं साथ दिनुभएकोमा,
+          मलाई माया गर्नुभएकोमा र हरेक परिस्थितिमा
+          साथ दिनुभएकोमा धेरै धेरै धन्यवाद।
+          <br><br>
+          तपाईं मेरो लागि सधैं विशेष हुनुहुन्छ। ❤️
+          <br><br>
+          Happy Father's Day, Dad!
+        </p>
 
-            <h2>
-                बुबा...
-            </h2>
-
-            <p>
-                तपाईं मेरो जीवनको
-                सबैभन्दा विशेष व्यक्तिहरूमध्ये एक हुनुहुन्छ।
-            </p>
-
-            <p>
-                सधैं खुसी र स्वस्थ रहनुहोस्।
-            </p>
-
-            <div class="final-title">
-                Happy Father's Day, Dad! ❤️
-            </div>
-
-            <div class="signature">
-                तपाईंको छोराबाट ❤️
-            </div>
-
-        </section>
+      </div>
 
     </div>
 
-</section>
+  </section>
 
 
-<script>
+  <!-- PHOTO POPUP -->
+  <div class="photo-lightbox" id="photoLightbox">
 
-function openSurprise() {
+    <div class="lightbox-box">
 
-    const opening =
-        document.getElementById("openingScreen");
+      <button class="close-button" id="closeButton">
+        ×
+      </button>
 
-    const page =
-        document.getElementById("surprisePage");
+      <div class="lightbox-image">
 
-    opening.classList.add("hide");
+        <img id="popupImage" src="" alt="Selected photo">
 
-    setTimeout(function () {
+      </div>
 
-        opening.style.display = "none";
+      <div class="lightbox-text">
 
-        page.classList.add("show");
+        <h2 id="popupTitle">
+          विशेष सम्झना ❤️
+        </h2>
 
-        window.scrollTo(0, 0);
+        <p id="popupDescription">
+          फोटोको कथा यहाँ देखिनेछ।
+        </p>
 
-    }, 650);
-}
+      </div>
 
+    </div>
 
-document
-    .getElementById("surpriseButton")
-    .addEventListener("click", openSurprise);
-
-
-const items =
-    document.querySelectorAll(".reveal");
+  </div>
 
 
-const observer =
-    new IntersectionObserver(
-        function(entries) {
+  <script>
 
-            entries.forEach(function(entry) {
+    /* Open main page */
+    function openSurprise() {
 
-                if (entry.isIntersecting) {
+      document.getElementById("openingScreen").style.display = "none";
 
-                    entry.target.classList.add("visible");
+      document.getElementById("surprisePage").style.display = "block";
 
-                    observer.unobserve(entry.target);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
 
-                }
+      revealMemories();
+    }
 
-            });
 
-        },
-        {
-            threshold: 0.12
+    /* Popup elements */
+    const photoLinks = document.querySelectorAll(".photo-link");
+
+    const lightbox = document.getElementById("photoLightbox");
+
+    const popupImage = document.getElementById("popupImage");
+
+    const popupTitle = document.getElementById("popupTitle");
+
+    const popupDescription = document.getElementById("popupDescription");
+
+    const closeButton = document.getElementById("closeButton");
+
+
+    /* Open photo popup */
+    photoLinks.forEach(card => {
+
+      card.addEventListener("click", function () {
+
+        const image = this.querySelector("img");
+
+        popupImage.src = image.src;
+
+        popupTitle.textContent = this.dataset.title;
+
+        popupDescription.textContent = this.dataset.description;
+
+        lightbox.style.display = "flex";
+
+        document.body.style.overflow = "hidden";
+
+      });
+
+    });
+
+
+    /* Close popup */
+    function closePopup() {
+
+      lightbox.style.display = "none";
+
+      document.body.style.overflow = "";
+
+    }
+
+
+    closeButton.addEventListener("click", closePopup);
+
+
+    /* Click outside popup */
+    lightbox.addEventListener("click", function(event) {
+
+      if (event.target === lightbox) {
+
+        closePopup();
+
+      }
+
+    });
+
+
+    /* ESC key */
+    document.addEventListener("keydown", function(event) {
+
+      if (event.key === "Escape") {
+
+        closePopup();
+
+      }
+
+    });
+
+
+    /* Scroll reveal */
+    function revealMemories() {
+
+      const memories = document.querySelectorAll(".memory");
+
+      memories.forEach((memory, index) => {
+
+        setTimeout(() => {
+
+          memory.classList.add("show");
+
+        }, index * 150);
+
+      });
+
+    }
+
+
+    /* Reveal while scrolling */
+    window.addEventListener("scroll", function() {
+
+      const memories = document.querySelectorAll(".memory");
+
+      memories.forEach(memory => {
+
+        const position = memory.getBoundingClientRect().top;
+
+        if (position < window.innerHeight - 80) {
+
+          memory.classList.add("show");
+
         }
-    );
 
+      });
 
-items.forEach(function(item) {
-    observer.observe(item);
-});
+    });
 
-</script>
+  </script>
 
 </body>
 </html>
+```
+
+**One thing:** this version uses `PHOTO 1.jpg` through `PHOTO 5.jpg`. Replace those five filenames with the **exact JPG filenames already in that red GitHub repo**. Everything else is ready: opening screen ✅ red theme ✅ hearts ✅ five photos ✅ clickable popup ✅ photo left/description right ✅ mobile ✅.
