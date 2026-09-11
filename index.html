@@ -1,6 +1,4 @@
-```html
-<
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -28,7 +26,6 @@
       min-height: 100vh;
     }
 
-    /* Floating hearts */
     .hearts {
       position: fixed;
       inset: 0;
@@ -85,7 +82,6 @@
       }
     }
 
-    /* Opening screen */
     .opening-screen {
       min-height: 100vh;
       display: flex;
@@ -163,7 +159,6 @@
       box-shadow: 0 0 35px rgba(255, 23, 68, 0.65);
     }
 
-    /* Main page */
     .surprise-page {
       display: none;
       position: relative;
@@ -198,7 +193,6 @@
       margin-bottom: 65px;
     }
 
-    /* Memories */
     .memory {
       margin-bottom: 80px;
       text-align: center;
@@ -253,7 +247,6 @@
       line-height: 1.7;
     }
 
-    /* Final message */
     .final-card {
       text-align: center;
       background: rgba(25, 0, 0, 0.8);
@@ -276,7 +269,6 @@
       font-size: 18px;
     }
 
-    /* Popup */
     .photo-lightbox {
       display: none;
       position: fixed;
@@ -361,7 +353,6 @@
       transform: scale(1.08);
     }
 
-    /* Mobile */
     @media (max-width: 768px) {
 
       .opening-card {
@@ -408,7 +399,6 @@
 
 <body>
 
-  <!-- Floating hearts -->
   <div class="hearts">
     <div class="heart">❤️</div>
     <div class="heart">❤️</div>
@@ -417,8 +407,6 @@
     <div class="heart">❤️</div>
   </div>
 
-
-  <!-- OPENING -->
   <section class="opening-screen" id="openingScreen">
 
     <div class="opening-card">
@@ -444,8 +432,6 @@
 
   </section>
 
-
-  <!-- MAIN PAGE -->
   <section class="surprise-page" id="surprisePage">
 
     <div class="container">
@@ -458,18 +444,14 @@
         तपाईंका लागि राखिएका केही विशेष सम्झनाहरू...
       </p>
 
-
-      <!-- PHOTO 1 -->
       <div class="memory">
 
         <div
           class="photo-card photo-link"
           data-title="पहिलो सम्झना ❤️"
-          data-description="यहाँ पहिलो फोटोको आफ्नो वास्तविक कथा लेख्नुहोस्।"
+          data-description="यो पहिलो विशेष सम्झना हो।"
         >
-
-          <img src="PHOTO 1.jpg" alt="Memory 1">
-
+          <img src="sangam uncle day.jpg" alt="Memory 1">
         </div>
 
         <h3>पहिलो सम्झना ❤️</h3>
@@ -480,18 +462,14 @@
 
       </div>
 
-
-      <!-- PHOTO 2 -->
       <div class="memory">
 
         <div
           class="photo-card photo-link"
           data-title="सुन्दर पल ❤️"
-          data-description="यहाँ दोस्रो फोटोको वास्तविक description लेख्नुहोस्।"
+          data-description="यो दोस्रो विशेष सम्झना हो।"
         >
-
-          <img src="PHOTO 2.jpg" alt="Memory 2">
-
+          <img src="sangam uncle day 2.jpg" alt="Memory 2">
         </div>
 
         <h3>सुन्दर पल ❤️</h3>
@@ -502,18 +480,14 @@
 
       </div>
 
-
-      <!-- PHOTO 3 -->
       <div class="memory">
 
         <div
           class="photo-card photo-link"
           data-title="अविस्मरणीय सम्झना ❤️"
-          data-description="यहाँ तेस्रो फोटोको description राख्नुहोस्।"
+          data-description="यो तेस्रो विशेष सम्झना हो।"
         >
-
-          <img src="PHOTO 3.jpg" alt="Memory 3">
-
+          <img src="sangam uncle day 3.jpg" alt="Memory 3">
         </div>
 
         <h3>अविस्मरणीय सम्झना ❤️</h3>
@@ -524,18 +498,14 @@
 
       </div>
 
-
-      <!-- PHOTO 4 -->
       <div class="memory">
 
         <div
           class="photo-card photo-link"
           data-title="बुबासँगको पल ❤️"
-          data-description="यहाँ चौथो फोटोको वास्तविक कथा लेख्नुहोस्।"
+          data-description="यो चौथो विशेष सम्झना हो।"
         >
-
-          <img src="PHOTO 4.jpg" alt="Memory 4">
-
+          <img src="sangam uncle day 4.jpg" alt="Memory 4">
         </div>
 
         <h3>बुबासँगको पल ❤️</h3>
@@ -546,18 +516,14 @@
 
       </div>
 
-
-      <!-- PHOTO 5 -->
       <div class="memory">
 
         <div
           class="photo-card photo-link"
           data-title="सधैं विशेष ❤️"
-          data-description="यहाँ पाँचौं फोटोको description लेख्नुहोस्।"
+          data-description="यो पाँचौं विशेष सम्झना हो।"
         >
-
-          <img src="PHOTO 5.jpg" alt="Memory 5">
-
+          <img src="sangam uncle day five.jpg" alt="Memory 5">
         </div>
 
         <h3>सधैं विशेष ❤️</h3>
@@ -568,8 +534,6 @@
 
       </div>
 
-
-      <!-- FINAL -->
       <div class="final-card">
 
         <h2>❤️ बुबा, धन्यवाद ❤️</h2>
@@ -590,8 +554,6 @@
 
   </section>
 
-
-  <!-- PHOTO POPUP -->
   <div class="photo-lightbox" id="photoLightbox">
 
     <div class="lightbox-box">
@@ -601,9 +563,7 @@
       </button>
 
       <div class="lightbox-image">
-
         <img id="popupImage" src="" alt="Selected photo">
-
       </div>
 
       <div class="lightbox-text">
@@ -622,10 +582,8 @@
 
   </div>
 
-
   <script>
 
-    /* Open main page */
     function openSurprise() {
 
       document.getElementById("openingScreen").style.display = "none";
@@ -641,7 +599,6 @@
     }
 
 
-    /* Popup elements */
     const photoLinks = document.querySelectorAll(".photo-link");
 
     const lightbox = document.getElementById("photoLightbox");
@@ -655,7 +612,6 @@
     const closeButton = document.getElementById("closeButton");
 
 
-    /* Open photo popup */
     photoLinks.forEach(card => {
 
       card.addEventListener("click", function () {
@@ -677,7 +633,6 @@
     });
 
 
-    /* Close popup */
     function closePopup() {
 
       lightbox.style.display = "none";
@@ -690,7 +645,6 @@
     closeButton.addEventListener("click", closePopup);
 
 
-    /* Click outside popup */
     lightbox.addEventListener("click", function(event) {
 
       if (event.target === lightbox) {
@@ -702,7 +656,6 @@
     });
 
 
-    /* ESC key */
     document.addEventListener("keydown", function(event) {
 
       if (event.key === "Escape") {
@@ -714,7 +667,6 @@
     });
 
 
-    /* Scroll reveal */
     function revealMemories() {
 
       const memories = document.querySelectorAll(".memory");
@@ -732,7 +684,6 @@
     }
 
 
-    /* Reveal while scrolling */
     window.addEventListener("scroll", function() {
 
       const memories = document.querySelectorAll(".memory");
@@ -754,4 +705,4 @@
   </script>
 
 </body>
-</html>.
+</html>
